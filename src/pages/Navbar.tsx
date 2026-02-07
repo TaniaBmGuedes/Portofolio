@@ -6,7 +6,7 @@ import {
   NavbarBrand,
   Button,
 } from "@heroui/react";
-import { useTheme } from "../../../ThemeProvider";
+import { useTheme } from "../../ThemeProvider";
 
 export default function NavBar() {
   const { theme, toggle } = useTheme();
