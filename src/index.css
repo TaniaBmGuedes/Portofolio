@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+
+:root[data-theme="light"] {
+  --bg: #f7f9fc;
+  --text: #0b1224;
+  --panel: #ffffff;
+  --accent: #2563eb;
+}
+:root[data-theme="dark"] {
+  --bg: #050712;
+  --text: #e9edf5;
+  --panel: #0c1120;
+  --accent: #7bf0ff;
+}
