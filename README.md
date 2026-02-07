@@ -26,14 +26,11 @@ The design focuses on clarity, performance, and a clean user experience.
 
 Personal portfolio website showcasing my profile, skills, and selected projects as a Frontend Developer with a background in Informatics Engineering.
 
-## 🚀 Live Demo
-👉 https://your-portfolio-url.com
-
 ---
 
-## 🧭 Portfolio Pages – Content Overview
+##  Portfolio Pages – Content Overview
 
-### 🏠 Home
+###  Home
 **Purpose:** Create a strong first impression and quickly communicate my value.
 
 **Content:**
@@ -46,7 +43,7 @@ Personal portfolio website showcasing my profile, skills, and selected projects 
 
 ---
 
-### 🙋 About
+###  About
 **Purpose:** Present both my personal and professional background.
 
 **Content:**
@@ -63,7 +60,7 @@ Personal portfolio website showcasing my profile, skills, and selected projects 
 
 ---
 
-### 🛠️ Skills
+###  Skills
 **Purpose:** Provide a scannable overview of my technical stack.
 
 **Frontend**
