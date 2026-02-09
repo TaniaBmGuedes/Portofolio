@@ -23,9 +23,9 @@ export default function Home() {
               Hi, I&apos;m Tânia Guedes · FullStack Developer
             </p>
           
-            <h1 className="text-4xl font-extrabold leading-tight text-white md:text-6xl">
+            {/* <h1 className="text-4xl font-extrabold leading-tight text-white md:text-6xl">
               I build modern interfaces for real-world products.
-            </h1>
+            </h1> */}
 
             <p className="mt-6 max-w-xl text-base text-slate-300 md:text-lg">
               FullStack Developer with a background in Informatics Engineering. I
