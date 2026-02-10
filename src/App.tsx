@@ -4,6 +4,7 @@ import Experience from "./pages/Experience";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import Skills from "./pages/Skills";
+import Contacts from "./pages/Contacts";
 //TODO: NAVARBAR;SCROLL and THEME
 function App() {
   return (
@@ -11,9 +12,10 @@ function App() {
       {/* <NavBar /> */}
       <Home />
       <AboutMe />
+      <Experience />
       <Skills />
       <Projects />
-      <Experience />
+      <Contacts />
     </>
   );
 }
