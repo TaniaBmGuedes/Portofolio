@@ -1,6 +1,7 @@
 import "./App.css";
 import AboutMe from "./pages/AboutMe";
 import Home from "./pages/Home";
+import Projects from "./pages/Projects";
 import Skills from "./pages/Skills";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
       <Home />
       <AboutMe />
       <Skills />
+      <Projects />
     </>
   );
 }

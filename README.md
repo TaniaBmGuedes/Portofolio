@@ -122,6 +122,8 @@ Selected projects available on my GitHub profile. Each project includes a short 
 - **GitHub:** https://github.com/TaniaBmGuedes/Blog  
 - **Live Demo:** *(add link after deployment)*
 
+I have to talk about my article
+
 ---
 
 ###  Experience
