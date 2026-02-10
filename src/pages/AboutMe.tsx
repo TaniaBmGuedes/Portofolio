@@ -82,6 +82,18 @@ export default function AboutMe() {
 
   return (
     <section className="relative min-h-screen bg-[#050712] overflow-hidden">
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5 }}
+        className="pointer-events-none absolute -top-40 -left-40 h-105 w-105 rounded-full bg-blue-500/20 blur-[120px]"
+      />
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5 }}
+        className="pointer-events-none absolute top-1/3 -right-40 h-105 w-105 rounded-full bg-purple-500/20 blur-[120px]"
+      />
       <div className="flex justify-center">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}

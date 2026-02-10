@@ -1,5 +1,6 @@
 import { Button, Avatar } from "@heroui/react";
 import { ArrowRight } from "@gravity-ui/icons";
+import { motion } from "framer-motion";
 import profilePhoto from "../assets/profilePhoto.jpeg";
 
 const highlights = ["React", "TypeScript", "Flutter", "APIs", "UI/UX"];
@@ -7,8 +8,18 @@ const highlights = ["React", "TypeScript", "Flutter", "APIs", "UI/UX"];
 export default function Home() {
   return (
     <section className="relative min-h-dvh bg-[#050712] overflow-hidden flex items-center justify-center">
-      <div className="pointer-events-none absolute -top-40 -left-40 h-105 w-105 rounded-full bg-blue-500/20 blur-[120px]" />
-      <div className="pointer-events-none absolute top-1/3 -right-40 h-105 w-105 rounded-full bg-purple-500/20 blur-[120px]" />
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5 }}
+        className="pointer-events-none absolute -top-40 -left-40 h-105 w-105 rounded-full bg-blue-500/20 blur-[120px]"
+      />
+      <motion.div
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5 }}
+        className="pointer-events-none absolute top-1/3 -right-40 h-105 w-105 rounded-full bg-purple-500/20 blur-[120px]"
+      />
 
       <div className="mx-auto flex w-full max-w-5xl justify-center px-6">
         <div className="flex w-full flex-col items-center gap-8 text-center">
@@ -22,15 +33,15 @@ export default function Home() {
             <p className="text-lg font-medium tracking-wide text-blue-300">
               Hi, I&apos;m Tânia Guedes · FullStack Developer
             </p>
-          
+
             {/* <h1 className="text-4xl font-extrabold leading-tight text-white md:text-6xl">
               I build modern interfaces for real-world products.
             </h1> */}
 
             <p className="mt-6 max-w-xl text-base text-slate-300 md:text-lg">
-              FullStack Developer with a background in Informatics Engineering. I
-              work mainly with React and TypeScript on the web, and Flutter for
-              mobile apps, contributing to real products used by users.
+              FullStack Developer with a background in Informatics Engineering.
+              I work mainly with React and TypeScript on the web, and Flutter
+              for mobile apps, contributing to real products used by users.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
