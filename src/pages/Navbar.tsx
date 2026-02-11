@@ -27,8 +27,11 @@ export default function NavBar() {
       animate="visible"
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
-      <div className="mx-auto max-w-6xl flex items-center justify-between gap-5 px-3 md:px-4 py-2 border border-white/10 rounded-full">
-        <div className="flex items-center gap-3">
+      <div className="mx-auto max-w-6xl flex items-center justify-between gap-5 px-3 md:px-4 py-2 border-b border-gray dark:border-white rouded-md">
+        <button
+          className="flex items-center gap-3"
+          onClick={() => (window.location.hash = "#main")}
+        >
           <motion.img
             src={profilePhoto}
             alt="Logo"
@@ -45,7 +48,7 @@ export default function NavBar() {
               Frontend · Fullstack Jr
             </p>
           </div>
-        </div>
+        </button>
 
         <nav className="hidden md:flex items-center gap-5">
           {navItems.map((item) => (
@@ -54,21 +57,13 @@ export default function NavBar() {
               href={item.href}
               onClick={() => setActiveHref(item.href)}
               className={cn(
-                "relative px-2 py-2 text-sm font-medium transition",
+                "relative px-2 py-2 text-sm font-medium transition no-underline decoration-transparent",
                 activeHref === item.href
-                  ? "text-cyan-300"
-                  : "text-slate-300 dark:text-slate-200 hover:text-cyan-300"
+                  ? "text-blue-600 dark:text-blue-300"
+                  : "text-slate-900 dark:text-slate-200 hover:text-blue-600 hover:dark:text-blue-300"
               )}
             >
               {item.label}
-              <span
-                className={cn(
-                  "absolute left-1 right-1 -bottom-1 h-.5 rounded-full transition-transform duration-200 origin-left",
-                  activeHref === item.href
-                    ? "bg-cyan-400 scale-x-100"
-                    : "bg-cyan-400/60 scale-x-0"
-                )}
-              />
             </Link>
           ))}
         </nav>
@@ -76,7 +71,7 @@ export default function NavBar() {
         <div className="hidden md:flex items-center gap-2">
           <Button
             isIconOnly
-            className="w-9 h-9 text-slate-200 hover:bg-white/10 rounded-full"
+           className="text-sm dark:text-dark font-medium tracking-wide px-4 py-3 rounded-full bg-blue-600 dark:bg-blue-300"
             onClick={toggleTheme}
             aria-label="Change theme"
           >
@@ -86,10 +81,10 @@ export default function NavBar() {
               <Moon className="w-4 h-4" />
             )}
           </Button>
+
           <Button
-            variant="primary"
+            className="text-sm dark:text-dark font-medium tracking-wide px-4 py-3 rounded-full bg-blue-600 dark:bg-blue-300"
             onClick={() => (window.location.hash = "#contacts")}
-            className="text-sm font-semibold px-4 py-2 rounded-full shadow-lg shadow-cyan-500/25"
           >
             Contact
           </Button>

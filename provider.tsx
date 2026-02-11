@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 interface ProvidersProps {
   children: ReactNode;

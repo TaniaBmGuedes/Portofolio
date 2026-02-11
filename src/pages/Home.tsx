@@ -41,7 +41,7 @@ export default function Home() {
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
               <Button
-                className="text-sm font-medium tracking-wide px-4 py-3 rounded-full bg-blue-600 dark:bg-blue-300"
+                className="text-sm dark:text-dark font-medium tracking-wide px-4 py-3 rounded-full bg-blue-600 dark:bg-blue-300"
                 onClick={() => (window.location.hash = "#projects")}
               >
                 View My Projects
