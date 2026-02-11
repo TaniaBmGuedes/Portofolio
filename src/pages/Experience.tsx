@@ -8,6 +8,7 @@ const experiences = [
   {
     company: "Bosch",
     role: "Curricular Internship – AI Research",
+    duration: "6 months",
     bullets: [
       "Designed and trained neural network models in Python.",
       "Contributed to cooperative positioning research.",
@@ -16,6 +17,7 @@ const experiences = [
   {
     company: "IZ – Impact Zero",
     role: "Frontend Developer",
+    duration: "1 year",
     bullets: [
       "Contributed to Flutter mobile application development.",
       "Built and maintained features in a React + TypeScript web app.",
@@ -40,7 +42,10 @@ export default function Experience() {
   };
 
   return (
-    <section className="relative min-h-screen bg-[#F0F7FF] dark:bg-[#050712] px-4 sm:px-6 py-16 sm:py-20">
+    <section
+      id="experience"
+      className="relative min-h-screen bg-transparent px-4 sm:px-6 py-16 sm:py-20"
+    >
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -69,15 +74,12 @@ export default function Experience() {
       >
         Roles where I shipped features, improved UX, and explored AI research.
       </motion.h2>
-      <div className="max-w-3xl mx-auto mb-8">
-        <Card className="bg-white/95 dark:bg-white/5 backdrop-blur border border-slate-200/60 dark:border-white/10 shadow-lg dark:shadow-blue-500/10 hover:shadow-blue-500/20 transition-shadow p-5 sm:p-6 flex flex-col gap-4 rounded-2xl">
+      <div className="max-w-3xl mx-auto mb-2 sm:mb-4">
+        <Card className="bg-white/95 dark:bg-white/5 backdrop-blur border border-slate-200/60 dark:border-white/10 shadow-lg dark:shadow-blue-500/10 hover:shadow-blue-500/20 transition-shadow p-4 sm:p-5 flex flex-col gap-3 rounded-2xl">
           {!isMobile && (
             <div className="space-y-1">
               <p className="text-sm uppercase tracking-[0.18em] text-blue-600 dark:text-blue-300">
                 Resume
-              </p>
-              <p className="text-xl font-semibold text-slate-900 dark:text-white">
-                Download my CV (last updated: 2025)
               </p>
               <p className="text-sm text-slate-600 dark:text-white/80">
                 Academic background and professional experience in one place.
@@ -94,7 +96,7 @@ export default function Experience() {
               a.click();
             }}
             variant="primary"
-            className="px-4 py-2 rounded-full font-semibold dark:text-black w-full sm:w-auto"
+            className=" rounded-full font-semibold dark:text-black w-full sm:w-auto h-10"
           >
             Download CV
           </Button>
@@ -102,7 +104,7 @@ export default function Experience() {
       </div>
 
       {isMobile ? (
-        <div className="max-w-md mx-auto w-full mt-6">
+        <div className="max-w-md mx-auto w-full mt-4">
           <Carousel
             responsive={carouselConfig}
             arrows
@@ -124,6 +126,9 @@ export default function Experience() {
                     <p className="text-xl font-semibold text-slate-900 dark:text-white mt-1">
                       {exp.role}
                     </p>
+                    <p className="text-xs text-slate-500 dark:text-white/60">
+                      {exp.duration}
+                    </p>
                   </div>
                   <ul className="space-y-2 text-slate-700 dark:text-white text-sm">
                     {exp.bullets.map((item, i) => (
@@ -139,10 +144,10 @@ export default function Experience() {
           </Carousel>
         </div>
       ) : (
-        <div className="relative max-w-3xl mx-auto pt-4 px-1">
-          <div className="absolute left-5 top-0 bottom-0 w-0.5 bg-slate-200 dark:bg-white/10" />
+        <div className="relative max-w-4xl mx-auto">
+          <div className="absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-0.5 bg-slate-200 dark:bg-white/10" />
 
-          <div className="space-y-6">
+          <div className="space-y-8">
             {experiences.map((exp, idx) => (
               <motion.div
                 key={exp.company}
@@ -150,18 +155,21 @@ export default function Experience() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="relative pl-12"
+                className="relative flex justify-center"
               >
-                <span className="absolute left-4.5 top-6 h-3 w-3 rounded-full bg-cyan-500 ring-4 ring-cyan-500/20" />
+                <span className="absolute left-1/2 -translate-x-1/2 top-6 h-3 w-3 rounded-full bg-cyan-500 ring-4 ring-cyan-500/20" />
 
-                <Card className="bg-white/95 dark:bg-white/5 backdrop-blur border border-slate-200/60 dark:border-white/10 shadow-lg dark:shadow-blue-500/10 hover:shadow-blue-500/20 transition-shadow rounded-2xl">
-                  <div className="p-5 sm:p-6 flex flex-col gap-3">
+                <Card className="w-10/12 bg-white/95 dark:bg-white/5 backdrop-blur border border-slate-200/60 dark:border-white/10 shadow-lg dark:shadow-blue-500/10 hover:shadow-blue-500/20 transition-shadow rounded-2xl">
+                  <div className="p-6 flex flex-col gap-3">
                     <div>
                       <p className="text-sm uppercase tracking-[0.18em] text-blue-600 dark:text-blue-300">
                         {exp.company}
                       </p>
                       <p className="text-xl font-semibold text-slate-900 dark:text-white mt-1">
                         {exp.role}
+                      </p>
+                      <p className="text-xs text-slate-500 dark:text-white/60">
+                        {exp.duration}
                       </p>
                     </div>
                     <ul className="space-y-2 text-slate-700 dark:text-white text-sm">

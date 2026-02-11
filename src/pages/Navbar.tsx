@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { getNavItems } from "../data/menuItems";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@heroui/styles";
@@ -19,6 +19,29 @@ export default function NavBar() {
   const navItems = getNavItems();
   const toggleMenu = useCallback(() => setMenuOpen((prev) => !prev), []);
 
+  // scroll spy
+  useEffect(() => {
+    const scrollEl = document.getElementById("page-scroll");
+    if (!scrollEl) return;
+    const handler = () => {
+      const offsets = navItems.map((item) => {
+        const id = item.href.replace("#", "");
+        const el = document.getElementById(id);
+        if (!el) return { id, top: Number.POSITIVE_INFINITY };
+        const top = Math.abs(el.offsetTop - scrollEl.scrollTop);
+        return { id, top };
+      });
+      const closest = offsets.reduce((a, b) => (b.top < a.top ? b : a), {
+        id: "",
+        top: Number.POSITIVE_INFINITY,
+      });
+      if (closest.id) setActiveHref(`#${closest.id}`);
+    };
+    handler();
+    scrollEl.addEventListener("scroll", handler, { passive: true });
+    return () => scrollEl.removeEventListener("scroll", handler);
+  }, [navItems]);
+
   return (
     <motion.header
       className="fixed top-3 left-0 right-0 z-30 px-3"
@@ -28,7 +51,7 @@ export default function NavBar() {
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
       {/* Desktop */}
-      <div className="hidden md:flex mx-auto max-w-6xl items-center justify-between gap-5 px-3 md:px-4 py-2 border-b border-gray dark:border-white rounded-md">
+      <div className="hidden md:flex mx-auto max-w-6xl items-center justify-between gap-5 px-3 md:px-4 py-2 rounded-full bg-white shadow-lg dark:bg-slate-900/90 dark:shadow-[0_12px_30px_-18px_rgba(0,0,0,0.8)]">
         <button
           className="flex items-center gap-3"
           onClick={() => (window.location.hash = "#main")}
@@ -70,6 +93,14 @@ export default function NavBar() {
         </nav>
 
         <div className="hidden md:flex items-center gap-2">
+          <Link
+            href="/cv.pdf"
+            target="_blank"
+            rel="noreferrer"
+            className="text-xs font-semibold text-blue-600 dark:text-blue-300 underline decoration-1"
+          >
+            Download my CV 
+          </Link>
           <Button
             isIconOnly
             variant="ghost"
@@ -87,7 +118,7 @@ export default function NavBar() {
       </div>
 
       {/* Mobile */}
-      <div className="md:hidden mx-auto max-w-6xl flex items-center justify-between gap-3 px-2 py-2 border-b border-gray/30 dark:border-white/15 rounded-md bg-white/70 dark:bg-black/40 backdrop-blur">
+      <div className="md:hidden mx-auto max-w-6xl flex items-center justify-between gap-3 px-2 py-2 rounded-full bg-white shadow-md dark:bg-slate-900/90">
         <button
           className="flex items-center gap-2"
           onClick={() => (window.location.hash = "#main")}

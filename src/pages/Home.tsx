@@ -7,7 +7,10 @@ const highlights = ["React", "TypeScript", "Flutter", "APIs", "UI/UX"];
 
 export default function Home() {
   return (
-    <section className="relative min-h-dvh bg-[#F0F7FF] dark:bg-[#050712]  overflow-hidden flex items-center justify-center pt-20 pb-14 px-4">
+    <section
+      id="home"
+      className="relative min-h-screen bg-transparent px-4 py-16 sm:px-6 sm:py-20"
+    >
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}

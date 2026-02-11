@@ -35,7 +35,10 @@ export default function Projects() {
   }, []);
 
   return (
-    <section className="relative min-h-screen bg-[#F0F7FF] dark:bg-[#050712] px-6 py-20">
+    <section
+      id="projects"
+      className="relative min-h-screen bg-transparent px-6 py-20"
+    >
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
