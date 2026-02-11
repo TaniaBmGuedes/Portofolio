@@ -12,7 +12,7 @@ export default function Skills() {
   );
   const [selectedSkill, setSelectedSkill] = useState<string | null>("react");
   return (
-    <section className="relative min-h-screen bg-[#050712] px-6 py-20">
+    <section className="relative min-h-screen bg-[#F0F7FF] dark:bg-[#050712] px-6 py-20">
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -29,7 +29,7 @@ export default function Skills() {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5 }}
-        className=" flex justify-center mb-3 text-3xl font-bold bg-linear-to-r from-blue-400 via-cyan-400 to-purple-500 bg-clip-text text-transparent"
+        className="text-blue-600 dark:text-blue-300 flex justify-center mb-3 text-3xl font-bold bg-linear-to-r from-blue-400 via-cyan-400 to-purple-500 bg-clip-text"
       >
         Skills
       </motion.h1>
@@ -38,11 +38,13 @@ export default function Skills() {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="mb-10 flex justify-center text-white/70 text-center"
+        className="mb-10 flex justify-center text-slate-600 dark:text-slate-300 text-center"
       >
         A quick overview of the tools and technologies I work with.
-        <span className="ml-2 text-cyan-400">Click any item</span> to see where
-        I’ve used it.
+        <span className="ml-2 mr-1 text-blue-600 dark:text-blue-300 ">
+          Click any item
+        </span>{" "}
+        to see where I’ve used it.
       </motion.h2>
 
       <motion.div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
@@ -56,7 +58,18 @@ export default function Skills() {
             whileHover={{ y: -6 }}
             className="h-full"
           >
-            <Card className="h-full rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 hover:-translate-y-1">
+            <Card
+              className="
+  bg-white/95 
+  dark:bg-white/5 
+  backdrop-blur 
+  border border-slate-200/60 dark:border-white/10 
+  shadow-lg dark:shadow-blue-500/10 
+  hover:shadow-blue-500/20 
+  transition-shadow
+"
+            >
+              {" "}
               <Card.Header>
                 <Card.Title
                   className={`text-lg font-semibold bg-linear-to-r ${group.accent} bg-clip-text text-transparent`}
@@ -64,7 +77,6 @@ export default function Skills() {
                   {group.title}
                 </Card.Title>
               </Card.Header>
-
               <Card.Description>
                 <ul className="space-y-2 text-foreground/80">
                   {group.items.map((item) => {
@@ -76,7 +88,7 @@ export default function Skills() {
                         onClick={() => {
                           setSelectedSkill(item.toLowerCase());
                         }}
-                        className="group flex cursor-pointer items-center gap-3 rounded-lg border border-white/10 bg-white/5 px-3 py-2 transition hover:bg-white/10 hover:scale-[1.02]"
+                        className="group flex cursor-pointer items-center gap-3 rounded-lg   border border-slate-200/60 dark:border-white/10  bg-white/5 px-3 py-2 transition hover:bg-white/10 hover:scale-[1.02]"
                       >
                         {Icon &&
                           (typeof Icon === "string" ? (
@@ -114,11 +126,26 @@ export default function Skills() {
           exit={{ opacity: 0, y: 20 }}
           className="w-full mt-16 "
         >
-          <Card className="rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 shadow-10">
+          <Card
+            className="
+  bg-white/95 
+  dark:bg-white/5 
+  backdrop-blur 
+  border border-slate-200/60 dark:border-white/10 
+  shadow-lg dark:shadow-blue-500/10 
+  hover:shadow-blue-500/20 
+  transition-shadow
+"
+          >
             <Card.Header>
-              <Card.Title className="text-xl font-semibold text-white">
+              <Card.Title className="text-xl font-semibold text-dark dark:text-white">
                 Where I used it:{" "}
-                <span className="capitalize text-cyan-400">
+                <span
+                  className={`text-md capitalize font-medium transition ${
+                    textColorMap[selectedSkill] ??
+                    "text-slate-600 dark:text-white/80"
+                  }`}
+                >
                   {selectedSkill}
                 </span>
               </Card.Title>

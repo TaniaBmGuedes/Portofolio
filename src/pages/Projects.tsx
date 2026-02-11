@@ -5,7 +5,7 @@ import { projects } from "../data";
 import { Button, Card, Modal } from "@heroui/react";
 import { useState } from "react";
 import { ArrowRight } from "@gravity-ui/icons";
-//TODO:Download pdf
+
 //TODO: ANIMATION IN CARROUSLE
 const responsiveThree = {
   all: { breakpoint: { max: 3000, min: 0 }, items: 3 },
@@ -28,7 +28,7 @@ export default function Projects() {
   const [cardSelected, setCardSelect] = useState(1);
   const [cardOpen, setCardOpen] = useState<number | null>(null);
   return (
-    <section className="relative min-h-screen bg-[#050712] px-6 py-20">
+    <section className="relative min-h-screen bg-[#F0F7FF] dark:bg-[#050712] px-6 py-20">
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -45,7 +45,7 @@ export default function Projects() {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5 }}
-        className=" flex justify-center mb-3 text-3xl font-bold bg-linear-to-r from-blue-400 via-cyan-400 to-purple-500 bg-clip-text text-transparent"
+        className="text-blue-600 dark:text-blue-300 flex justify-center mb-3 text-3xl font-bold bg-linear-to-r from-blue-400 via-cyan-400 to-purple-500 bg-clip-text"
       >
         Projects
       </motion.h1>
@@ -79,13 +79,23 @@ export default function Projects() {
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
-              whileHover={{ y:1,scale: 1 }}
+              whileHover={{ y: 1, scale: 1 }}
               className="flex justify-center"
               animate={index === cardSelected ? "active" : "inactive"}
               variants={cardVariants}
             >
-              <Card className="w-210 h-110 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 p-6 shadow-xl hover:shadow-cyan-500/20 ">
-                <Card.Header className="text-lg font-semibold text-cyan-400">
+              <Card
+                className="
+  bg-white/95 
+  dark:bg-white/5 
+  backdrop-blur 
+  border border-slate-200/60 dark:border-white/10 
+  shadow-lg dark:shadow-blue-500/10 
+  hover:shadow-blue-500/20 
+  transition-shadow
+"
+              >
+                <Card.Header className="text-lg font-semibold text-blue-600 dark:text-blue-300">
                   {project.title}
                 </Card.Header>
                 <div className="mt-2 text-white/70 space-y-2">
@@ -93,15 +103,19 @@ export default function Projects() {
                     <span className="bg-linear-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
                       Description:
                     </span>{" "}
-                    {project.desc ?? "No description provided."}
+                    <span className="text-slate-700 dark:text-white ">
+                      {project.desc ?? "No description provided."}
+                    </span>
                   </div>
                   <div>
                     <span className="bg-linear-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
                       Tech:{" "}
                     </span>{" "}
-                    {Array.isArray(project.tech)
-                      ? project.tech.join(", ")
-                      : project.tech ?? "N/A"}
+                    <span className="text-slate-700 dark:text-white ">
+                      {Array.isArray(project.tech)
+                        ? project.tech.join(", ")
+                        : project.tech ?? "N/A"}
+                    </span>
                   </div>
                   <span className="bg-linear-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
                     Link:
@@ -114,7 +128,7 @@ export default function Projects() {
                             href={item}
                             target="_blank"
                             rel="noreferrer"
-                            className="text-cyan-300 hover:text-cyan-200 underline decoration-cyan-400/70"
+                            className="text-blue-600 dark:text-blue-300 hover:text-cyan-200 underline decoration-cyan-400/70"
                           >
                             {item}
                           </a>
@@ -131,7 +145,8 @@ export default function Projects() {
                               href={item}
                               target="_blank"
                               rel="noreferrer"
-                              className="text-cyan-300 hover:text-cyan-200 underline decoration-cyan-400/70"
+                              download
+                              className="text-blue-600 dark:text-blue-300 hover:text-cyan-200 underline decoration-cyan-400/70"
                             >
                               {item}
                             </a>
@@ -145,7 +160,7 @@ export default function Projects() {
                   <div>
                     <Button
                       onClick={() => setCardOpen(index)}
-                      className="text-sm font-medium tracking-wide border border-blue-300 p-3 rounded-full"
+                      className="px-4 py-2 rounded-full font-semibold dark:text-black"
                     >
                       Open to see details
                       <ArrowRight />
@@ -161,38 +176,43 @@ export default function Projects() {
         <Modal isOpen onOpenChange={() => setCardOpen(null)}>
           <Modal.Backdrop>
             <Modal.Container className="items-center p-4">
-              <Modal.Dialog className="w-full max-w-md rounded-2xl bg-linear-to-br from-[#0b1224] via-[#0f1e3a] to-[#0b1224] text-white border border-white/10 shadow-2xl shadow-cyan-500/25">
-                <Modal.CloseTrigger className="text-white/70 hover:bg-white/10 rounded-full" />
-                <Modal.Header className="flex flex-col gap-1 pb-0">
-                  <span className="text-[11px] uppercase tracking-[0.18em] text-cyan-300/80">
-                    Project
-                  </span>
-                  <h3 className="text-lg font-semibold text-white">
+              <Modal.Dialog className="w-full max-w-md rounded-2xl bg-white/95 dark:bg-black backdrop-blur border border-slate-200/60 dark:border-white/10">
+                <Modal.CloseTrigger className="text-slate-500 dark:text-white/70 hover:bg-black/5 dark:hover:bg-white/10 rounded-full" />
+                <Modal.Header className="flex flex-col gap-1 pb-0 text-slate-900 dark:text-white">
+                  <h3 className="mt-3 text-lg font-semibold">
                     {projects[cardOpen]?.title}
                   </h3>
                 </Modal.Header>
-                <Modal.Body className="space-y-4 text-sm leading-relaxed text-white/85 max-h-[60vh] overflow-y-auto pr-1">
+                <Modal.Body className="space-y-4 text-sm leading-relaxed text-slate-700 dark:text-white/85 max-h-[60vh] overflow-y-auto pr-1">
                   <div>
-                    <strong className="text-cyan-300">Problem:</strong>{" "}
+                    <strong className="text-blue-600 dark:text-cyan-300">
+                      Problem:
+                    </strong>{" "}
                     {projects[cardOpen]?.problem ?? "—"}
                   </div>
                   <div>
-                    <strong className="text-cyan-300">Solution:</strong>{" "}
+                    <strong className="text-blue-600 dark:text-cyan-300">
+                      Solution:
+                    </strong>{" "}
                     {projects[cardOpen]?.solution ?? "—"}
                   </div>
                   <div>
-                    <strong className="text-cyan-300">Challenges:</strong>{" "}
+                    <strong className="text-blue-600 dark:text-cyan-300">
+                      Challenges:
+                    </strong>{" "}
                     {projects[cardOpen]?.challenges ?? "—"}
                   </div>
                   <div>
-                    <strong className="text-cyan-300">What I Learned:</strong>{" "}
+                    <strong className="text-blue-600 dark:text-cyan-300">
+                      What I Learned:
+                    </strong>{" "}
                     {projects[cardOpen]?.learned ?? "—"}
                   </div>
                 </Modal.Body>
                 <Modal.Footer className="flex justify-end pt-0">
                   <Button
                     onClick={() => setCardOpen(null)}
-                    className="bg-cyan-500/90 text-white hover:bg-cyan-400 px-4 py-2 rounded-lg"
+                    className="px-4 py-2 rounded-full font-semibold dark:text-black"
                   >
                     Close
                   </Button>

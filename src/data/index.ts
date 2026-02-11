@@ -106,8 +106,8 @@ export const skillsIcons = [
   { name: "Unit Tests", icon: Bug, color: "text-green-400" },
   { name: "Integration Tests", icon: Bug, color: "text-green-400" },
   { name: "E2E Tests", icon: Bug, color: "text-green-400" },
-  { name: "TensorFlow", icon: tensorflowIcon, color: "text-sky-400" },
-  { name: "Pytorch", icon: pytorchIcon, color: "text-sky-400" },
+  { name: "TensorFlow", icon: tensorflowIcon, color: "text-neutral-400" },
+  { name: "Pytorch", icon: pytorchIcon, color: "text-neutral-400" },
 ];
 export const skillsTextColor = [
   { name: "React", textColor: "text-cyan-400" },
@@ -120,7 +120,9 @@ export const skillsTextColor = [
 
   { name: "SQL Server", textColor: "text-indigo-400" },
   { name: "Git & GitHub", textColor: "text-orange-400" },
-  { name: "Unix", textColor: "text-gray-300" },
+  { name: "TensorFlow", textColor: "text-orange-400" },
+  { name: "Pytorch", textColor: "text-orange-300" },
+  { name: "Unix", textColor: "text-yellow-500" },
   { name: "Jira", textColor: "text-blue-300" },
 
   { name: "Unit Tests", textColor: "text-green-400" },
@@ -145,7 +147,8 @@ export const projects = [
       "React + TypeScript frontend calling a Node/Express API that creates Stripe Checkout sessions and handles payment lifecycle.",
     challenges:
       "Webhook handling, async payment states, secure API keys and cross-origin flows.",
-    learned: "Stripe integration, fullstack API design, payment UX and webhooks.",
+    learned:
+      "Stripe integration, fullstack API design, payment UX and webhooks.",
   },
   {
     title: "Cooperative Positioning with AI for Vehicular Localization",
@@ -159,14 +162,15 @@ export const projects = [
       " GNSS",
       " CARLA Simulator",
     ],
-    pdf: ["/Article.pdf"],
+    pdf: ["Article.pdf"],
     problem:
       "GNSS positioning loses accuracy in urban environments due to multipath and NLOS.",
     solution:
       "Cooperative positioning that selects dynamic reference vehicles with AI models to correct GNSS readings.",
     challenges:
       "Data sparsity, noisy signals, model selection (LSTM/CNN/RF) and evaluation in simulated scenarios.",
-    learned: "Applied ML for GNSS, feature engineering, experimentation with multiple model families.",
+    learned:
+      "Applied ML for GNSS, feature engineering, experimentation with multiple model families.",
   },
   {
     title: "Chronos Pomodoro",
@@ -176,9 +180,12 @@ export const projects = [
     tech: ["TypeScript", "HTML", "CSS"],
     github: ["https://github.com/TaniaBmGuedes/Chronos-Pomodoro"],
     problem: "Keep users on task with focused work/break intervals.",
-    solution: "Built a lightweight timer UI with preset and custom intervals and clear state transitions.",
-    challenges: "Timer accuracy, interval state management, and clean visual feedback.",
-    learned: "Time-based UI state handling in TypeScript and simple UX for focus tools.",
+    solution:
+      "Built a lightweight timer UI with preset and custom intervals and clear state transitions.",
+    challenges:
+      "Timer accuracy, interval state management, and clean visual feedback.",
+    learned:
+      "Time-based UI state handling in TypeScript and simple UX for focus tools.",
   },
   {
     title: "Blog",
@@ -190,8 +197,10 @@ export const projects = [
     problem: "Organize content and layouts for a personal blog.",
     solution:
       "Created a modular blog starter with reusable sections and simple styling for posts.",
-    challenges: "Structuring content, reusable components, and clean typography.",
-    learned: "Content architecture, modular components, and layout consistency.",
+    challenges:
+      "Structuring content, reusable components, and clean typography.",
+    learned:
+      "Content architecture, modular components, and layout consistency.",
   },
   {
     title: "Xmas Tree",
@@ -201,9 +210,12 @@ export const projects = [
     tech: ["React", "JavaScript", "CSS"],
     github: ["https://github.com/TaniaBmGuedes/xmas-tree"],
     problem: "Create a playful interactive holiday UI.",
-    solution: "Animated Christmas tree with React state/animations for lights and ornaments.",
-    challenges: "Smooth animation timing and performance with many DOM elements.",
-    learned: "React animation patterns and performance tweaks for interactive UIs.",
+    solution:
+      "Animated Christmas tree with React state/animations for lights and ornaments.",
+    challenges:
+      "Smooth animation timing and performance with many DOM elements.",
+    learned:
+      "React animation patterns and performance tweaks for interactive UIs.",
   },
   {
     title: "Nextjs-to-Nestjs",
@@ -213,9 +225,12 @@ export const projects = [
     tech: ["Next.js", "TypeScript", "NestJS", "REST APIs"],
     github: ["https://github.com/TaniaBmGuedes/nextjs-to-nestjs"],
     problem: "Build a Next.js client for a NestJS backend.",
-    solution: "Implemented data fetching and UI flows that consume REST endpoints exposed by NestJS.",
-    challenges: "API contract alignment and handling loading/error states on the client.",
-    learned: "Fullstack integration, data fetching strategies, and API typing in TypeScript.",
+    solution:
+      "Implemented data fetching and UI flows that consume REST endpoints exposed by NestJS.",
+    challenges:
+      "API contract alignment and handling loading/error states on the client.",
+    learned:
+      "Fullstack integration, data fetching strategies, and API typing in TypeScript.",
   },
   {
     title: "Nestjs-to-Nextjs",
@@ -225,9 +240,11 @@ export const projects = [
     tech: ["NestJS", "TypeScript", "Next.js", "REST APIs"],
     github: ["https://github.com/TaniaBmGuedes/nestjs-to-nextjs"],
     problem: "Provide reliable APIs for a Next.js frontend.",
-    solution: "Designed REST services in NestJS with clear DTOs and controllers consumed by Next.js.",
+    solution:
+      "Designed REST services in NestJS with clear DTOs and controllers consumed by Next.js.",
     challenges: "Request validation, DTO typing, and CORS configuration.",
-    learned: "API design with NestJS, validation, and frontend-backend contracts.",
+    learned:
+      "API design with NestJS, validation, and frontend-backend contracts.",
   },
   {
     title: "Muscle Human Body",
@@ -239,8 +256,10 @@ export const projects = [
     problem: "Present muscle anatomy data in an accessible way.",
     solution:
       "Processed datasets in Python and rendered visual representations of muscle groups.",
-    challenges: "Data cleaning, mapping structures to visuals, and keeping the UI clear.",
-    learned: "Data processing for visualization and building educational UI flows.",
+    challenges:
+      "Data cleaning, mapping structures to visuals, and keeping the UI clear.",
+    learned:
+      "Data processing for visualization and building educational UI flows.",
   },
 ];
 export const responsive = {

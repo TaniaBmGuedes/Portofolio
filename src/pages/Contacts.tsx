@@ -1,18 +1,15 @@
 import { Card } from "@heroui/react";
 import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  ExclamationShapeFill,
-  LogoGithub,
-  LogoLinkedin,
-} from "@gravity-ui/icons";
+import { ArrowRight, LogoGithub, LogoLinkedin } from "@gravity-ui/icons";
+import { Mail, Phone } from "lucide-react";
 
 const contacts = [
   {
     label: "Email",
     value: "taniabmguedes@gmail.com",
-    href: "mailto:taniabmguedes@gmail.com",
-    icon: ExclamationShapeFill,
+    href: "",
+    icon: Mail,
+    copyOnly: true,
   },
   {
     label: "GitHub",
@@ -26,12 +23,19 @@ const contacts = [
     href: "https://www.linkedin.com/in/t%C3%A2nia-guedes-6b296b208/",
     icon: LogoLinkedin,
   },
+  {
+    label: "Mobile",
+    value: "+351 917 023 690",
+    href: "",
+    icon: Phone,
+    copyOnly: true,
+  },
 ];
 
 //TODO:SEND EMAIL
 export default function Contacts() {
   return (
-    <section className="relative min-h-screen bg-[#050712] px-6 py-20">
+    <section className="relative min-h-screen bg-[#F0F7FF] dark:bg-[#050712] px-6 py-20">
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -44,12 +48,11 @@ export default function Contacts() {
         transition={{ delay: 0.5 }}
         className="pointer-events-none absolute top-1/3 -right-40 h-105 w-105 rounded-full bg-purple-500/20 blur-[120px]"
       />
-
       <motion.h1
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5 }}
-        className="flex justify-center mb-3 text-3xl font-bold bg-linear-to-r from-blue-400 via-cyan-400 to-purple-500 bg-clip-text text-transparent"
+        className="text-blue-600 dark:text-blue-300 flex justify-center mb-3 text-3xl font-bold bg-linear-to-r from-blue-400 via-cyan-400 to-purple-500 bg-clip-text"
       >
         Contact
       </motion.h1>
@@ -58,13 +61,24 @@ export default function Contacts() {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="mb-10 flex justify-center text-white/70 text-center"
+        className="mb-10 flex justify-center text-slate-600 dark:text-slate-300 text-center"
       >
         Open to frontend and junior fullstack opportunities. Let’s talk.
       </motion.h2>
 
-      <div className="max-w-4xl mx-auto grid gap-6 md:grid-cols-2">
-        <Card className="col-span-1 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 shadow-xl p-6 flex flex-col gap-4">
+      <div className="max-w-4xl mx-auto grid gap-6 ">
+        {/* <Card
+          className="
+  bg-white/95 
+  dark:bg-white/5 
+  backdrop-blur 
+  border border-slate-200/60 dark:border-white/10 
+  shadow-lg dark:shadow-blue-500/10 
+  hover:shadow-blue-500/20 
+  transition-shadow
+"
+        >
+          {" "}
           <div>
             <p className="text-sm uppercase tracking-[0.18em] text-cyan-300/80">
               Quick Message
@@ -76,40 +90,70 @@ export default function Contacts() {
               I usually respond within 24–48 hours.
             </p>
           </div>
-          {/* <button
+        <button
             href="mailto:taniabmguedes@gmail.com"
             className="bg-cyan-500/90 text-white hover:bg-cyan-400 px-4 py-2 rounded-lg font-semibold inline-flex items-center gap-2 w-fit"
           >
             Send Email
             <ArrowRight />
-          </button> */}
-        </Card>
+          </button> 
+        </Card> */}
 
-        <Card className="col-span-1 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 shadow-xl p-6 flex flex-col gap-4">
-          <p className="text-sm uppercase tracking-[0.18em] text-cyan-300/80">
+        <Card
+          className="
+  bg-white/95 
+  dark:bg-white/5 
+  backdrop-blur 
+  border border-slate-200/60 dark:border-white/10 
+  shadow-lg dark:shadow-blue-500/10 
+  hover:shadow-blue-500/20 
+  transition-shadow
+"
+        >
+          <p className="text-sm uppercase tracking-[0.18em] text-blue-600 dark:text-blue-300 ">
             Connect
           </p>
           <div className="space-y-3">
-            {contacts.map(({ label, value, href, icon: Icon }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noreferrer"
-                className="group flex items-center justify-between rounded-xl border border-white/10 bg-white/5 px-4 py-3 hover:bg-white/10 transition"
-              >
-                <div className="flex items-center gap-3">
-                  <span className="rounded-full bg-white/10 p-2 text-cyan-300">
-                    <Icon className="w-4 h-4" />
-                  </span>
-                  <div>
-                    <p className="text-sm text-white/60">{label}</p>
-                    <p className="text-white font-semibold">{value}</p>
+            {contacts.map(({ label, value, href, icon: Icon, copyOnly }) => {
+              const clickable = Boolean(href && !copyOnly);
+              const handleClick = (e: React.MouseEvent<HTMLDivElement | HTMLAnchorElement>) => {
+                if (copyOnly) {
+                  e.preventDefault();
+                  navigator.clipboard?.writeText(value);
+                }
+              };
+              const Wrapper: "a" | "div" = clickable ? "a" : "div";
+
+              return (
+                <Wrapper
+                  key={label}
+                  {...(clickable
+                    ? { href, target: "_blank", rel: "noreferrer" }
+                    : {})}
+                  onClick={handleClick}
+                  className={`group flex items-center justify-between rounded-xl border border-slate-200/70 dark:border-white/10 bg-white dark:bg-white/5 px-4 py-3 hover:bg-slate-50 dark:hover:bg-white/10 transition shadow-sm ${
+                    copyOnly ? "cursor-copy" : "cursor-pointer"
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="rounded-full bg-slate-100 dark:bg-white/10 p-2 text-cyan-500 dark:text-cyan-300">
+                      <Icon className="w-4 h-4" aria-hidden />
+                    </span>
+                    <div>
+                      <p className="text-sm text-slate-500 dark:text-white/60">
+                        {label}
+                      </p>
+                      <p className="text-slate-900 dark:text-white font-semibold">
+                        {value}
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <ArrowRight className="text-cyan-300 opacity-0 group-hover:opacity-100 transition" />
-              </a>
-            ))}
+                  {clickable && (
+                    <ArrowRight className="text-cyan-500 dark:text-cyan-300 opacity-0 group-hover:opacity-100 transition" />
+                  )}
+                </Wrapper>
+              );
+            })}
           </div>
         </Card>
       </div>
