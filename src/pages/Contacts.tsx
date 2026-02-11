@@ -1,6 +1,11 @@
-import { Button, Card } from "@heroui/react";
+import { Card } from "@heroui/react";
 import { motion } from "framer-motion";
-import { ArrowRight, ExclamationShapeFill, LogoGithub, LogoLinkedin } from "@gravity-ui/icons";
+import {
+  ArrowRight,
+  ExclamationShapeFill,
+  LogoGithub,
+  LogoLinkedin,
+} from "@gravity-ui/icons";
 
 const contacts = [
   {
