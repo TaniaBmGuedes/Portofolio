@@ -27,7 +27,8 @@ export default function NavBar() {
       animate="visible"
       transition={{ duration: 0.8, ease: "easeOut" }}
     >
-      <div className="mx-auto max-w-6xl flex items-center justify-between gap-5 px-3 md:px-4 py-2 border-b border-gray dark:border-white rouded-md">
+      {/* Desktop */}
+      <div className="hidden md:flex mx-auto max-w-6xl items-center justify-between gap-5 px-3 md:px-4 py-2 border-b border-gray dark:border-white rounded-md">
         <button
           className="flex items-center gap-3"
           onClick={() => (window.location.hash = "#main")}
@@ -35,7 +36,7 @@ export default function NavBar() {
           <motion.img
             src={profilePhoto}
             alt="Logo"
-            className="h-10 w-10 rounded-xl  shadow-sm"
+            className="h-10 w-10 rounded-xl shadow-sm"
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -71,7 +72,8 @@ export default function NavBar() {
         <div className="hidden md:flex items-center gap-2">
           <Button
             isIconOnly
-           className="text-sm dark:text-dark font-medium tracking-wide px-4 py-3 rounded-full bg-blue-600 dark:bg-blue-300"
+            variant="ghost"
+            className="w-9 h-9 text-slate-700 dark:text-slate-200 hover:bg-white/10 rounded-full"
             onClick={toggleTheme}
             aria-label="Change theme"
           >
@@ -81,42 +83,50 @@ export default function NavBar() {
               <Moon className="w-4 h-4" />
             )}
           </Button>
-
-          <Button
-            className="text-sm dark:text-dark font-medium tracking-wide px-4 py-3 rounded-full bg-blue-600 dark:bg-blue-300"
-            onClick={() => (window.location.hash = "#contacts")}
-          >
-            Contact
-          </Button>
         </div>
       </div>
 
-      <motion.div
-        className="md:hidden mt-2 flex items-center justify-between gap-2"
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-      >
-        <Button
-          isIconOnly
-          className="w-10 h-10 text-orange-400 hover:bg-orange-50 dark:hover:bg-orange-500/10"
-          onClick={toggleTheme}
-          aria-label="Change theme"
+      {/* Mobile */}
+      <div className="md:hidden mx-auto max-w-6xl flex items-center justify-between gap-3 px-2 py-2 border-b border-gray/30 dark:border-white/15 rounded-md bg-white/70 dark:bg-black/40 backdrop-blur">
+        <button
+          className="flex items-center gap-2"
+          onClick={() => (window.location.hash = "#main")}
         >
-          {theme === "dark" ? (
-            <Sun className="w-4 h-4" />
-          ) : (
-            <Moon className="w-4 h-4" />
-          )}
-        </Button>
-        <Button
-          variant="outline"
-          className="text-sm font-medium tracking-wide px-4 py-2 rounded-full"
-          onClick={toggleMenu}
-        >
-          {menuOpen ? "Close" : "Menu"}
-        </Button>
-      </motion.div>
+          <motion.img
+            src={profilePhoto}
+            alt="Logo"
+            className="h-8 w-8 rounded-lg shadow-sm"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          />
+          <span className="text-xs font-semibold text-slate-700 dark:text-slate-200">
+            Tânia Guedes
+          </span>
+        </button>
+        <div className="flex items-center gap-2">
+          <Button
+            isIconOnly
+            variant="ghost"
+            className="w-9 h-9 text-slate-700 dark:text-slate-200 hover:bg-white/10 rounded-full"
+            onClick={toggleTheme}
+            aria-label="Change theme"
+          >
+            {theme === "dark" ? (
+              <Sun className="w-4 h-4" />
+            ) : (
+              <Moon className="w-4 h-4" />
+            )}
+          </Button>
+          <Button
+            variant="outline"
+            className="text-xs font-medium px-3 py-2 rounded-full"
+            onClick={toggleMenu}
+          >
+            {menuOpen ? "Close" : "Menu"}
+          </Button>
+        </div>
+      </div>
 
       <AnimatePresence>
         {menuOpen && (
@@ -125,7 +135,7 @@ export default function NavBar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden mt-3 space-y-2 rounded-2xl border border-white/10 bg-white/80 dark:bg-black/70 backdrop-blur p-3 shadow-lg"
+            className="md:hidden mt-2 mx-auto max-w-6xl space-y-2 rounded-2xl border border-white/10 bg-white/90 dark:bg-black/70 backdrop-blur p-3 shadow-lg"
           >
             {navItems.map((item) => (
               <a
@@ -134,7 +144,7 @@ export default function NavBar() {
                 className={cn(
                   "block rounded-xl px-3 py-2 text-sm font-medium hover:bg-white/60 hover:text-cyan-600 dark:hover:bg-white/10",
                   activeHref === item.href
-                    ? "text-cyan-400"
+                    ? "text-cyan-500"
                     : "text-slate-700 dark:text-slate-200"
                 )}
                 onClick={() => {
@@ -145,12 +155,6 @@ export default function NavBar() {
                 {item.label}
               </a>
             ))}
-            <Button
-              className="w-full bg-cyan-500/90 text-white hover:bg-cyan-400 px-4 py-2 rounded-full font-semibold"
-              onClick={() => setMenuOpen(false)}
-            >
-              Contact
-            </Button>
           </motion.nav>
         )}
       </AnimatePresence>

@@ -3,21 +3,19 @@ import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { projects } from "../data";
 import { Button, Card, Modal } from "@heroui/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowRight } from "@gravity-ui/icons";
 
 //TODO: ANIMATION IN CARROUSLE
-const responsiveThree = {
-  all: { breakpoint: { max: 3000, min: 0 }, items: 3 },
+const responsiveConfig = {
+  desktop: { breakpoint: { max: 3000, min: 1280 }, items: 3 },
+  tablet: { breakpoint: { max: 1280, min: 768 }, items: 2 },
+  mobile: { breakpoint: { max: 768, min: 0 }, items: 1 },
 };
 
 const cardVariants: Variants = {
-  active: {
-    filter: "saturate(1)",
-  },
-  inactive: {
-    opacity: 0.35,
-  },
+  active: { filter: "saturate(1)", opacity: 1 },
+  inactive: { filter: "saturate(1)", opacity: 1 },
 };
 
 export default function Projects() {
@@ -25,8 +23,17 @@ export default function Projects() {
     hidden: { opacity: 0 },
     visible: { opacity: 1 },
   };
-  const [cardSelected, setCardSelect] = useState(1);
+ 
   const [cardOpen, setCardOpen] = useState<number | null>(null);
+  const [, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 768);
+    check();
+    window.addEventListener("resize", check);
+    return () => window.removeEventListener("resize", check);
+  }, []);
+
   return (
     <section className="relative min-h-screen bg-[#F0F7FF] dark:bg-[#050712] px-6 py-20">
       <motion.div
@@ -59,41 +66,44 @@ export default function Projects() {
         <Carousel
           draggable
           infinite
-          centerMode
+          centerMode={false}
           partialVisible={false}
-          responsive={responsiveThree}
+          responsive={responsiveConfig}
           autoPlaySpeed={1000}
           keyBoardControl
           transitionDuration={500}
           containerClass="w-full"
-          removeArrowOnDeviceType={["tablet", "mobile"]}
-          itemClass="px-3"
-          afterChange={(_, { currentSlide, slidesToShow }) => {
-            const visible = slidesToShow ?? 3;
-
-            const middleIndex =
-              (currentSlide + Math.floor(visible)) % projects.length;
-            setCardSelect(middleIndex);
-          }}
+          arrows
+          removeArrowOnDeviceType={[]}
+          itemClass="px-2 sm:px-3"
+          customLeftArrow={
+            <button
+              aria-label="Previous"
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-30 bg-black/40 dark:bg-white/20 text-white rounded-full p-2 shadow-md"
+            >
+              ‹
+            </button>
+          }
+          customRightArrow={
+            <button
+              aria-label="Next"
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-30 bg-black/40 dark:bg-white/20 text-white rounded-full p-2 shadow-md"
+            >
+              ›
+            </button>
+          }
+          
         >
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
               whileHover={{ y: 1, scale: 1 }}
               className="flex justify-center"
-              animate={index === cardSelected ? "active" : "inactive"}
+              animate="active"
               variants={cardVariants}
             >
               <Card
-                className="
-  bg-white/95 
-  dark:bg-white/5 
-  backdrop-blur 
-  border border-slate-200/60 dark:border-white/10 
-  shadow-lg dark:shadow-blue-500/10 
-  hover:shadow-blue-500/20 
-  transition-shadow
-"
+                className="w-full max-w-85 sm:max-w-none bg-white/95 dark:bg-white/5 backdrop-blur border border-slate-200/60 dark:border-white/10 shadow-lg dark:shadow-blue-500/10 hover:shadow-blue-500/20 transition-shadow rounded-2xl"
               >
                 <Card.Header className="text-lg font-semibold text-blue-600 dark:text-blue-300">
                   {project.title}
