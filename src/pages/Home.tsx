@@ -77,7 +77,7 @@ export default function Home() {
               ))}
             </div>
 
-            <div className="mt-6 flex flex-wrap justify-center gap-2 ">
+            <div className="mt-6 hidden sm:flex flex-wrap justify-center gap-2 ">
               {highlights.map((item) => (
                 <span
                   key={item}
