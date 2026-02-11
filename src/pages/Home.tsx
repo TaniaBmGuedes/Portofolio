@@ -7,7 +7,7 @@ const highlights = ["React", "TypeScript", "Flutter", "APIs", "UI/UX"];
 
 export default function Home() {
   return (
-    <section className="relative min-h-dvh bg-[#050712] overflow-hidden flex items-center justify-center">
+    <section className="relative min-h-dvh bg-[#F0F7FF] dark:bg-[#050712] overflow-hidden flex items-center justify-center">
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -30,52 +30,65 @@ export default function Home() {
                 TG
               </Avatar.Fallback>
             </Avatar>
-            <p className="text-lg font-medium tracking-wide text-blue-300">
+            <p className="text-lg font-medium tracking-wide text-blue-600 dark:text-blue-300">
               Hi, I&apos;m Tânia Guedes · FullStack Developer
             </p>
 
-            {/* <h1 className="text-4xl font-extrabold leading-tight text-white md:text-6xl">
-              I build modern interfaces for real-world products.
-            </h1> */}
-
-            <p className="mt-6 max-w-xl text-base text-slate-300 md:text-lg">
+            <p className="mt-6 max-w-xl text-base text-slate-600 dark:text-slate-300 md:text-lg">
               FullStack Developer with a background in Informatics Engineering.
               I work mainly with React and TypeScript on the web, and Flutter
               for mobile apps, contributing to real products used by users.
             </p>
-
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-              <Button className="text-sm font-medium tracking-wide border border-blue-300 p-3 rounded-full">
+              <Button
+                className="text-sm font-medium tracking-wide px-4 py-3 rounded-full bg-blue-600 dark:bg-blue-300"
+                onClick={() => (window.location.hash = "#projects")}
+              >
                 View My Projects
                 <ArrowRight />
               </Button>
 
-              <Button className="text-sm font-medium tracking-wide  border border-blue-300 p-3 rounded-full">
-                Let&apos;s talk
+              <Button
+                className="text-sm font-medium tracking-wide px-4 py-3 rounded-full bg-blue-600 dark:bg-blue-300"
+                onClick={() => (window.location.hash = "#experience")}
+              >
+                My experience
                 <ArrowRight />
               </Button>
             </div>
 
-            <div className="mt-10 grid max-w-xl grid-cols-3 gap-4 text-center">
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur">
-                <p className="text-2xl font-bold text-white">2024</p>
-                <p className="text-xs text-slate-300">Graduated</p>
+            <div className="mt-10 grid max-w-xl grid-cols-3 gap-4 text-center ">
+              <div className="rounded-2xl border  bg-white/5 p-4 backdrop-blur border-blue-600 dark:border-blue-300">
+                <p className="text-2xl font-bold text-slate-400 dark:text-white">
+                  2024
+                </p>
+                <p className="text-xs text-dark-400 dark:text-slate-300">
+                  Graduated
+                </p>
               </div>
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur">
-                <p className="text-2xl font-bold text-white">3+</p>
-                <p className="text-xs text-slate-300">Real projects</p>
+              <div className="rounded-2xl border  bg-white/5 p-4 backdrop-blur border-blue-600 dark:border-blue-300">
+                <p className="text-2xl font-bold text-slate-400 dark:text-white">
+                  3+
+                </p>
+                <p className="text-xs text-dark-400 dark:text-slate-300">
+                  Real projects
+                </p>
               </div>
-              <div className="rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur">
-                <p className="text-2xl font-bold text-white">1</p>
-                <p className="text-xs text-slate-300">Product team</p>
+              <div className="rounded-2xl border  bg-white/5 p-4 backdrop-blur border-blue-600 dark:border-blue-300">
+                <p className="text-2xl font-bold text-slate-400 dark:text-white">
+                  1
+                </p>
+                <p className="text-xs text-dark-400 dark:text-slate-300">
+                  Product team
+                </p>
               </div>
             </div>
 
-            <div className="mt-8 flex flex-wrap justify-center gap-2">
+            <div className="mt-8 flex flex-wrap justify-center gap-2 ">
               {highlights.map((item) => (
                 <span
                   key={item}
-                  className="rounded-md border border-white/10 bg-white/10 px-3 py-1 text-xs font-medium text-slate-200 backdrop-blur"
+                  className="rounded-md border border-blue-600/60 dark:border-blue-300 px-3 py-1 text-xs font-medium text-slate-700 dark:text-slate-200"
                 >
                   {item}
                 </span>

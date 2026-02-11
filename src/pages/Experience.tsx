@@ -21,10 +21,10 @@ const experiences = [
     ],
   },
 ];
-
+//TODO: CHORNOLOIG TIMELINE
 export default function Experience() {
   return (
-    <section className="relative min-h-screen bg-[#050712] px-6 py-20">
+    <section className="relative min-h-screen bg-[#F0F7FF] dark:bg-[#050712]  px-6 py-20">
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -41,7 +41,7 @@ export default function Experience() {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5 }}
-        className="flex justify-center mb-3 text-3xl font-bold bg-linear-to-r from-blue-400 via-cyan-400 to-purple-500 bg-clip-text text-transparent"
+        className="text-blue-600 dark:text-blue-300 flex justify-center mb-3 text-3xl font-bold bg-linear-to-r from-blue-400 via-cyan-400 to-purple-500 bg-clip-text"
       >
         Experience
       </motion.h1>
@@ -49,20 +49,30 @@ export default function Experience() {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
-        className="mb-10 flex justify-center text-white/70 text-center"
+        className="mb-10 flex justify-center text-slate-600 dark:text-slate-300 text-center"
       >
         Roles where I shipped features, improved UX, and explored AI research.
       </motion.h2>
       <div className="max-w-4xl mx-auto mb-8">
-        <Card className="rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 shadow-xl p-6 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+        <Card
+          className="
+  bg-white/95 
+  dark:bg-white/5 
+  backdrop-blur 
+  border border-slate-200/60 dark:border-white/10 
+  shadow-lg dark:shadow-blue-500/10 
+  hover:shadow-blue-500/20 
+  transition-shadow
+"
+        >
           <div>
-            <p className="text-sm uppercase tracking-[0.18em] text-cyan-300/80">
+            <p className="text-sm uppercase tracking-[0.18em] text-blue-600 dark:text-blue-300">
               Resume
             </p>
-            <p className="text-xl font-semibold text-white mt-1">
+            <p className="text-xl font-semibold text-dark dark:text-white 900 mt-1">
               Download my CV (last updated: 2025)
             </p>
-            <p className="text-sm text-white/70">
+            <p className="text-sm text-dark dark:text-white ">
               Academic background and professional experience in one place.
             </p>
           </div>
@@ -77,7 +87,7 @@ export default function Experience() {
           </Button> */}
         </Card>
       </div>
-      //TODO: CHORNOLOIG TIMELINE
+
       <div className="grid gap-6 md:grid-cols-2 max-w-6xl mx-auto">
         {experiences.map((exp, idx) => (
           <motion.div
@@ -89,19 +99,29 @@ export default function Experience() {
             whileHover={{ y: -6 }}
             className="h-full"
           >
-            <Card className="h-full rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 shadow-xl hover:shadow-cyan-500/10 transition-all duration-300 hover:-translate-y-1 p-6 flex flex-col gap-4">
+            <Card
+              className="
+  bg-white/95 
+  dark:bg-white/5 
+  backdrop-blur 
+  border border-slate-200/60 dark:border-white/10 
+  shadow-lg dark:shadow-blue-500/10 
+  hover:shadow-blue-500/20 
+  transition-shadow
+"
+            >
               <div>
-                <p className="text-sm uppercase tracking-[0.18em] text-cyan-300/80">
+                <p className="text-sm uppercase tracking-[0.18em] text-blue-600 dark:text-blue-300">
                   {exp.company}
                 </p>
-                <p className="text-xl font-semibold text-white mt-1">
+                <p className="text-xl font-semibold text-dark dark:text-white mt-1">
                   {exp.role}
                 </p>
               </div>
-              <ul className="space-y-2 text-white/80 text-sm">
+              <ul className="space-y-2 text-dark dark:text-white  text-sm">
                 {exp.bullets.map((item, i) => (
                   <li key={i} className="flex gap-2">
-                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-cyan-400 flex-shrink-0" />
+                    <span className="mt-1 h-1.5 w-1.5 rounded-full bg-cyan-500 " />
                     <span>{item}</span>
                   </li>
                 ))}

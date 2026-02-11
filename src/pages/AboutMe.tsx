@@ -81,7 +81,7 @@ export default function AboutMe() {
   }, []);
 
   return (
-    <section className="relative min-h-screen bg-[#050712] overflow-hidden">
+    <section className="relative min-h-screen bg-[#F0F7FF] dark:bg-[#050712] px-6 py-20">
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
@@ -94,16 +94,14 @@ export default function AboutMe() {
         transition={{ delay: 0.5 }}
         className="pointer-events-none absolute top-1/3 -right-40 h-105 w-105 rounded-full bg-purple-500/20 blur-[120px]"
       />
-      <div className="flex justify-center">
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="mb-15 mt-15 text-3xl font-bold bg-linear-to-r from-blue-400 via-cyan-400 to-purple-500 bg-clip-text text-transparent"
-        >
-          About Me
-        </motion.h1>
-      </div>
+      <motion.h1
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5 }}
+        className="text-blue-600 dark:text-blue-300 flex justify-center mb-3 text-3xl font-bold bg-linear-to-r from-blue-400 via-cyan-400 to-purple-500 bg-clip-text"
+      >
+        About Me
+      </motion.h1>
 
       <div
         ref={containerRef}
@@ -124,8 +122,9 @@ export default function AboutMe() {
               <motion.path
                 d={paths.left}
                 fill="none"
-                stroke="rgba(59,130,246,0.7)"
+                stroke="currentColor"
                 strokeWidth="3"
+                className="text-blue-500/50 dark:text-blue-300/90"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: 1 }}
                 transition={{ duration: 1.2 }}
@@ -133,8 +132,9 @@ export default function AboutMe() {
               <motion.path
                 d={paths.mid}
                 fill="none"
-                stroke="rgba(59,130,246,0.7)"
+                stroke="currentColor"
                 strokeWidth="3"
+                className="text-blue-500/50 dark:text-blue-300/90"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: 1 }}
                 transition={{ duration: 1.5 }}
@@ -142,8 +142,9 @@ export default function AboutMe() {
               <motion.path
                 d={paths.right}
                 fill="none"
-                stroke="rgba(59,130,246,0.7)"
+                stroke="currentColor"
                 strokeWidth="3"
+                className="text-blue-500/50 dark:text-blue-300/90"
                 initial={{ pathLength: 0 }}
                 animate={{ pathLength: 1 }}
                 transition={{ duration: 1.8 }}
@@ -161,9 +162,21 @@ export default function AboutMe() {
             whileHover={{ y: -6, scale: 1.01 }}
             transition={{ type: "spring", stiffness: 250, damping: 18 }}
           >
-            <Card className="bg-white/95 backdrop-blur border border-white/10 shadow-lg hover:shadow-blue-500/20 transition-shadow">
+            <Card
+              className="
+  bg-white/95 
+  dark:bg-white/5 
+  backdrop-blur 
+  border border-slate-200/60 dark:border-white/10 
+  shadow-lg dark:shadow-blue-500/10 
+  hover:shadow-blue-500/20 
+  transition-shadow
+"
+            >
               <Card.Header>
-                <Card.Title>Profile</Card.Title>
+                <Card.Title className="text-blue-600 dark:text-blue-300">
+                  Profile
+                </Card.Title>
               </Card.Header>
               <Card.Description className="text-foreground/80 space-y-3">
                 <p>
@@ -194,9 +207,21 @@ export default function AboutMe() {
             transition={{ type: "spring", stiffness: 250, damping: 18 }}
             ref={midRef}
           >
-            <Card className="bg-white/95 backdrop-blur border border-white/10 shadow-lg hover:shadow-blue-500/20 transition-shadow">
+            <Card
+              className="
+  bg-white/95 
+  dark:bg-white/5 
+  backdrop-blur 
+  border border-slate-200/60 dark:border-white/10 
+  shadow-lg dark:shadow-blue-500/10 
+  hover:shadow-blue-500/20 
+  transition-shadow
+"
+            >
               <Card.Header>
-                <Card.Title>What I value in my work</Card.Title>
+                <Card.Title className="text-blue-600 dark:text-blue-300">
+                  What I value in my work
+                </Card.Title>
               </Card.Header>
               <Card.Description>
                 <ul className="list-disc pl-5">
@@ -217,9 +242,21 @@ export default function AboutMe() {
             transition={{ type: "spring", stiffness: 250, damping: 18 }}
             ref={rightRef}
           >
-            <Card className="bg-white/95 backdrop-blur border border-white/10 shadow-lg hover:shadow-blue-500/20 transition-shadow">
+            <Card
+              className="
+  bg-white/95 
+  dark:bg-white/5 
+  backdrop-blur 
+  border border-slate-200/60 dark:border-white/10 
+  shadow-lg dark:shadow-blue-500/10 
+  hover:shadow-blue-500/20 
+  transition-shadow
+"
+            >
               <Card.Header>
-                <Card.Title>A bit more about me</Card.Title>
+                <Card.Title className="text-blue-600 dark:text-blue-300">
+                  A bit more about me
+                </Card.Title>
               </Card.Header>
               <Card.Description>
                 <ul className="list-disc pl-5">
