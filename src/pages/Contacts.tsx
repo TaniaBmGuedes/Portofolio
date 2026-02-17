@@ -1,7 +1,7 @@
 import { Card } from "@heroui/react";
 import { motion } from "framer-motion";
 import { ArrowRight, LogoGithub, LogoLinkedin } from "@gravity-ui/icons";
-import { Mail, Phone } from "lucide-react";
+import { Mail } from "lucide-react";
 
 const contacts = [
   {
@@ -22,14 +22,7 @@ const contacts = [
     value: "linkedin.com/in/tânia-guedes-6b296b208",
     href: "https://www.linkedin.com/in/t%C3%A2nia-guedes-6b296b208/",
     icon: LogoLinkedin,
-  },
-  {
-    label: "Mobile",
-    value: "+351 917 023 690",
-    href: "",
-    icon: Phone,
-    copyOnly: true,
-  },
+  }
 ];
 
 //TODO:SEND EMAIL
