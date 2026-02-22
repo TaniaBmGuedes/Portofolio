@@ -10,36 +10,36 @@ export const Layout: React.FC = () => {
   return (
     <div
       id="page-scroll"
-      className="overflow-x-hidden overflow-y-scroll h-screen snap-mandatory snap-y"
+      className="overflow-x-hidden overflow-y-scroll h-screen"
     >
       <NavBar />
 
-      <section id="home" className="snap-start h-screen">
+      <section id="home" className="min-h-screen">
         <div className="max-w-5xl mx-auto w-full h-full">
           <Home />
         </div>
       </section>
-      <section id="aboutMe" className="snap-start h-screen">
+      <section id="aboutMe" className="min-h-screen">
         <div className="max-w-5xl mx-auto w-full h-full">
           <AboutMe />
         </div>
       </section>
-      <section id="experience" className="snap-start h-screen">
+      <section id="experience" className="min-h-screen">
         <div className="max-w-5xl mx-auto w-full h-full">
           <Experience />
         </div>
       </section>
-      <section id="skills" className="snap-start h-screen">
+      <section id="skills" className="min-h-screen">
         <div className="max-w-5xl mx-auto w-full h-full">
           <Skills />
         </div>
       </section>
-      <section id="projects" className="snap-start h-screen">
+      <section id="projects" className="min-h-screen">
         <div className="max-w-5xl mx-auto w-full h-full">
           <Projects />
         </div>
       </section>
-      <section id="contacts" className="snap-start h-screen">
+      <section id="contacts" className="min-h-screen">
         <div className="max-w-5xl mx-auto w-full h-full">
           <Contacts />
         </div>
